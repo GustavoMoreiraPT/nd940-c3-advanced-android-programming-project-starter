@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#004349</color>
     <color name="colorAccent">#F9A825</color>
     <color name="white">#FFFFFF</color>
+    <color name="cloudColor">#9E7EDD</color>
+    <color name="circleColor">#F9B811</color>
+    <color name="errorDownloadColor">#FF0000</color>
+    <color name="successDownloadColor">#229B55</color>
 </resources>
