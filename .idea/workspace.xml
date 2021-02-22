@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="23f4b1c1-0e66-4abb-b68d-63e3ad7cea54" name="Default Changelist" comment="" />
+    <list default="true" id="23f4b1c1-0e66-4abb-b68d-63e3ad7cea54" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,9 +42,9 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="754" y="-806" key="FileChooserDialogImpl" timestamp="1612208847810">
+    <state x="754" y="-806" key="FileChooserDialogImpl" timestamp="1614021899030">
       <screen x="14" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="754" y="-806" key="FileChooserDialogImpl/0.0.1280.680/14.-1080.1920.1040@14.-1080.1920.1040" timestamp="1612208847810" />
+    <state x="754" y="-806" key="FileChooserDialogImpl/0.0.1280.680/14.-1080.1920.1040@14.-1080.1920.1040" timestamp="1614021899030" />
   </component>
 </project>
