@@ -137,6 +137,14 @@ class LoadingButton @JvmOverloads constructor(
         progressArc = RectF(widthSize - 100f, heightSize / 2 - 25f, widthSize.toFloat() - 50f, heightSize / 2 + 25f)
     }
 
+    fun download() {
+        val fraction = valueAnimator.animatedFraction
+        valueAnimator.cancel()
+        valueAnimator.setCurrentFraction(fraction + 0.1f)
+        valueAnimator.duration = 1000
+        valueAnimator.start()
+    }
+
     companion object {
         private const val BUTTON_TEXT_FONT = "Roboto"
     }

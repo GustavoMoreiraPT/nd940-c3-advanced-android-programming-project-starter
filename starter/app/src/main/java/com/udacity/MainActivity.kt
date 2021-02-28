@@ -15,6 +15,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
+import com.udacity.notifications.sendNotification
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         custom_button.setOnClickListener {
             val currentSelection = radioGroup.checkedRadioButtonId
-            if (currentSelection == DEFAULT_RADIO_SELECTION) {
+            if (currentSelection != DEFAULT_RADIO_SELECTION) {
                 when (currentSelection) {
                     radioGlide.id -> {
                         setOption(DownloadOptions.GLIDE)
@@ -51,8 +53,8 @@ class MainActivity : AppCompatActivity() {
                 download(currentOption)
                 custom_button.load()
             }
-            createVersionChannels()
         }
+        createVersionChannels()
     }
 
     private fun createVersionChannels() {
@@ -83,6 +85,18 @@ class MainActivity : AppCompatActivity() {
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
+            if (id == downloadID) {
+                val queryDownload = DownloadManager.Query()
+                val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                val cursor = downloadManager.query(queryDownload)
+                if (cursor.moveToFirst()) {
+                    val status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
+                    val success = (status == DownloadManager.STATUS_SUCCESSFUL)
+                    val titleDownload = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_TITLE))
+                    sendNotification(success, titleDownload)
+                }
+                custom_button.download()
+            }
         }
     }
 
@@ -106,6 +120,12 @@ class MainActivity : AppCompatActivity() {
         val downloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
         downloadID =
             downloadManager.enqueue(request)// enqueue puts the download request in the queue.
+    }
+
+    private fun sendNotification(success: Boolean, titleDownload: String) {
+        val notificationManager = ContextCompat.getSystemService(this, NotificationManager::class.java) as NotificationManager
+        notificationManager.cancelAll()
+        notificationManager.sendNotification(this, success, titleDownload)
     }
 
     companion object {

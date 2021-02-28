@@ -25,5 +25,6 @@
     <string name="status_success">Success</string>
     <string name="status_fail">Fail</string>
     <string name="ok_button">Ok</string>
+    <string name="channel_id">download_channel</string>
 
 </resources>
