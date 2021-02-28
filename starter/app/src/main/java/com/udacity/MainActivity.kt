@@ -52,9 +52,16 @@ class MainActivity : AppCompatActivity() {
                 }
                 download(currentOption)
                 custom_button.load()
+            } else {
+                Toast.makeText(this, getString(R.string.select_option_message), Toast.LENGTH_LONG).show()
             }
         }
         createVersionChannels()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(receiver)
     }
 
     private fun createVersionChannels() {

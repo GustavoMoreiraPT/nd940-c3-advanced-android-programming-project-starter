@@ -22,6 +22,7 @@ class LoadingButton @JvmOverloads constructor(
     private var customDefaultText = ""
     private var customLoadingText = ""
     private var customTextColor = 0
+    private var loadingBackgroundColor = 0
 
     private var displayText = ""
 
@@ -38,6 +39,7 @@ class LoadingButton @JvmOverloads constructor(
             customLoadingText = getString(R.styleable.LoadingButton_downloadingText) ?: "Loading"
             customLoadingCircleColor = getColor(R.styleable.LoadingButton_circleColor, Color.RED)
             customTextColor = getColor(R.styleable.LoadingButton_textColor, Color.WHITE)
+            loadingBackgroundColor = getColor(R.styleable.LoadingButton_backgroundColor, Color.BLUE)
             displayText = customDefaultText
         }
     }
@@ -108,7 +110,7 @@ class LoadingButton @JvmOverloads constructor(
         canvas!!.drawRect(0f, 0f, widthSize.toFloat(), heightSize.toFloat(), paint)
 
         if(buttonState == ButtonState.Loading){
-            paint.color = customBackgroundColor
+            paint.color = loadingBackgroundColor
             val progressRect = progressIndicator / 1000f * widthSize
             canvas.drawRect(0f, 0f, progressRect, heightSize.toFloat(), paint)
 

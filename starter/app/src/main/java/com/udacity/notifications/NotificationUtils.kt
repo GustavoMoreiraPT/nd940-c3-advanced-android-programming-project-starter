@@ -15,10 +15,10 @@ private val FLAGS = 0
 
 fun NotificationManager.sendNotification(applicationContext: Context, success: Boolean, titleDownload: String) {
 
-
     val contentIntent = Intent(applicationContext, DetailActivity::class.java)
     contentIntent.putExtra(DetailActivity.STATUS, success)
     contentIntent.putExtra(DetailActivity.FILE_NAME, titleDownload)
+    contentIntent.putExtra(DetailActivity.NOTIFICATION_ID, NOTIFICATION_ID)
 
 
     val contentPendingIntent = PendingIntent.getActivity(
